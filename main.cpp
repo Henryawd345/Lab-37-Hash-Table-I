@@ -101,6 +101,12 @@ void remove_key(map<int, list<string>> &hash_table){
     }
 }
 
+void modify_key(map<int, list <string>> &hash_table){
+
+
+    
+}
+
 int main() {
     ifstream fin("lab-37-data-2.txt");
 
@@ -125,7 +131,7 @@ int main() {
         cout << "1. Print first 100 entries\n";
         cout << "2. Search for a key\n";
         cout << "3. Add a key\n";
-        cout << "4. Remove a key (coming soon)\n";
+        cout << "4. Remove a key\n";
         cout << "5. Modify a key (coming soon)\n";
         cout << "6. Exit\n";
         cout << "Enter your choice: ";
