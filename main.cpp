@@ -14,6 +14,29 @@ int gen_hash_index(const string &s){
     return sum;
 }
 
+void print_100(const map<int, list<string>>&hash_table){
+    int printed = 0;
+
+    cout << "\n=== Displaying the FIRST 100 hash table entries ===\n\n";
+
+    for (const auto &entry : hash_table) {
+        if (printed >= 100) break;
+
+        int index = entry.first;
+        const list<string> &codes = entry.second;
+
+        cout << "Index " << index << ": ";
+
+        for (const string &c : codes) {
+            cout << c << " ";
+        }
+        cout << endl;
+
+        printed++;
+    }
+    cout << "\n(Printed entries = " << printed << ")\n";
+} 
+
 void search_key(const map<int, list<string>> &hash_table){
     string key;
     cout << "Enter key to search: ";
@@ -50,33 +73,7 @@ int main() {
     map<int, list<string>> hash_table;
     string code;
     
-    while (fin >> code){
-        int index = gen_hash_index(code);
-        hash_table[index].push_back(code);
-    }
-    fin.close();
-
-    int printed = 0;
-
-    cout << "=== Displaying the FIRST 100 hash table entries ===" << endl << endl;
-
-    for (const auto &entry : hash_table) {
-        int index = entry.first;
-        const list<string> &codes = entry.second;
-
-        cout << "Index " << index << ": ";
-
-        for (const string &c : codes) {
-            cout << c << " ";
-        }
-        cout << endl;
-
-        printed++;
-
-        if (printed >= 100) {
-            break;   
-        }
-    }
+    
     return 0;
 } 
 /* 
