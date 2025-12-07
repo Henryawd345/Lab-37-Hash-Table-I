@@ -21,6 +21,21 @@ void search_key(const map<int, list<string>> &hash_table){
 
     int index = gen_hash_index(key);
 
+    auto it = hash_table.find(index);
+    if (it == hash_table.end()){
+        cout << "key NOT found. (No bucket for index " << index << ".)\n";
+        return;
+    }
+
+    const list<string> &bucket = it->second;
+
+    auto pos = find(bucket.begin(), bucket.end(), key);
+
+    if (pos == bucket.end()){
+        cout << "Key NOT found in bucket index " << index << ".\n";
+    } else {
+        cout << "key FOUND in bucket index " << index << ".\n";
+    }
 
 }
 
