@@ -22,7 +22,6 @@ int main() {
     }
 
     map<int, list<string>> hash_table;
-
     string code;
     
     while (fin >> code){
@@ -33,13 +32,27 @@ int main() {
 
     int printed = 0;
 
-    for (const auto &entry : hash_table){
+    for (const auto &entry : hash_table) {
+        if (printed >= 100) {
+            break;             
+        }
+
         int index = entry.first;
         const list<string> &codes = entry.second;
 
-        cout << "Index " << index << ": ";
+        cout << "Index " << index << " (" << codes.size() << " items): ";
 
-        
+        int shown = 0;
+        for (const string &c : codes) {
+            cout << c << " ";
+            shown++;
+            if (shown >= 10) {        
+                cout << "...";
+                break;
+            }
+        }
+        cout << endl;
+        printed++;
     }
     return 0;
 
