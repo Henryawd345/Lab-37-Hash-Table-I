@@ -6,6 +6,7 @@
 #include <list>
 using namespace std;
 
+
 int gen_hash_index(const string &s){
     int sum = 0;
     for (char c : s){
