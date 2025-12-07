@@ -2,6 +2,7 @@
 #include <fstream>
 #include <string>
 #include <map>
+#include <algorithm>
 #include <list>
 using namespace std;
 
@@ -11,6 +12,16 @@ int gen_hash_index(const string &s){
         sum += static_cast<int>(c);
     }
     return sum;
+}
+
+void search_key(const map<int, list<string>> &hash_table){
+    string key;
+    cout << "Enter key to search: ";
+    cin >> key;
+
+    int index = gen_hash_index(key);
+
+
 }
 
 int main() {
