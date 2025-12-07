@@ -1,6 +1,13 @@
 #include <iostream>
+#include <string>
 using namespace std;
 
+int sum_ascii(const string &s){
+    int sum = 0;
+    for (char c : s){
+        sum += static_cast<int>(c);
+    }
+}
 
 int main() {
     char a = 'A';
