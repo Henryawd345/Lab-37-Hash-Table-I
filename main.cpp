@@ -32,27 +32,24 @@ int main() {
 
     int printed = 0;
 
-    for (const auto &entry : hash_table) {
-        if (printed >= 100) {
-            break;             
-        }
+    cout << "=== Displaying the FIRST 100 hash table entries ===" << endl << endl;
 
+    for (const auto &entry : hash_table) {
         int index = entry.first;
         const list<string> &codes = entry.second;
 
-        cout << "Index " << index << " (" << codes.size() << " items): ";
+        cout << "Index " << index << ": ";
 
-        int shown = 0;
         for (const string &c : codes) {
             cout << c << " ";
-            shown++;
-            if (shown >= 10) {        
-                cout << "...";
-                break;
-            }
         }
         cout << endl;
+
         printed++;
+
+        if (printed >= 100) {
+            break;   
+        }
     }
     return 0;
 
