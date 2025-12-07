@@ -72,6 +72,35 @@ void add_key(map<int, list<string>> &hash_table){
     cout << "Key \"" << key << "\" added to bucket index " << index << ".\n";
 }
 
+void remove_key(map<int, list<string>> &hash_table){
+    string key;
+    cout << "Enter key to remove: ";
+    cin >> key;
+
+    int index = gen_hash_index(key);
+
+    auto it = hash_table.find(index);
+    if (it == hash_table.end()){
+        cout << "Key NOT found. (No bucket for index " << index << ".)\n";
+        return;
+    }
+
+    list<string> &bucket = it->second;
+
+    auto pos = find(bucket.begin(), bucket.end(), key);
+
+    if (pos == bucket.end()){
+        cout << "Key NOT found in bucket index " << index << ".\n";
+    } else {
+        bucket.erase(pos);
+        cout << "Key \"" << key << "\" removed from bucket index " << index << ".\n";
+
+        if (bucket.empty()){
+            hash_table.erase(it);
+        }
+    }
+}
+
 int main() {
     ifstream fin("lab-37-data-2.txt");
 
@@ -113,6 +142,8 @@ int main() {
                 add_key(hash_table);
                 break;
             case 4:
+                remove_key(hash_table);
+                break;
             case 5:
                 cout << "This option is not implemented yet in this step.\n";
                 break;
