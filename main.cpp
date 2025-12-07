@@ -95,7 +95,7 @@ int main() {
         cout << "\n===== HASH TABLE MENU =====\n";
         cout << "1. Print first 100 entries\n";
         cout << "2. Search for a key\n";
-        cout << "3. Add a key (coming soon)\n";
+        cout << "3. Add a key\n";
         cout << "4. Remove a key (coming soon)\n";
         cout << "5. Modify a key (coming soon)\n";
         cout << "6. Exit\n";
@@ -110,6 +110,8 @@ int main() {
                 search_key(hash_table);
                 break;
             case 3:
+                add_key(hash_table);
+                break;
             case 4:
             case 5:
                 cout << "This option is not implemented yet in this step.\n";
