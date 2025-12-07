@@ -117,6 +117,27 @@ void modify_key(map<int, list <string>> &hash_table){
         cout << "Old key NOT found. (No bucket for index " << old_index << ".)\n";
         return;
     }
+
+    list<string> &old_bucket = it->second;
+
+    auto pos = find(old_bucket.begin(), old_bucket.end(), old_key);
+
+    if (pos == old_bucket.end()){
+        cout << "Old key NOT found in bucket index " << old_index << ".\n";
+        return;
+    }
+
+    old_bucket.erase(pos);
+    if (old_bucket.empty()){
+        hash_table.erase(it);
+    }
+
+    int new_index = gen_hash_index(new_key);
+    hash_table[new_index].push_back(new_key);
+
+    cout << "Key modified.\n";
+    cout << "Old key \"" << old_key << "\" was removed from index " << old_index
+         << " and new key \"" << new_key << "\" was added to index " << new_index << ".\n";
 }
 
 int main() {
@@ -163,7 +184,7 @@ int main() {
                 remove_key(hash_table);
                 break;
             case 5:
-                cout << "This option is not implemented yet in this step.\n";
+                modify_key(hash_table);
                 break;
             case 6:
                 cout << "Exiting program...\n";
@@ -173,8 +194,6 @@ int main() {
         }
     } 
     while (choice != 6);
-
-
 
     return 0;
 } 
