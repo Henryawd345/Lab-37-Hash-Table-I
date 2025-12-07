@@ -3,7 +3,7 @@
 #include <string>
 using namespace std;
 
-int sum_ascii(const string &s){
+int gen_hash_index(const string &s){
     int sum = 0;
     for (char c : s){
         sum += static_cast<int>(c);
@@ -27,7 +27,7 @@ int main() {
         if (count < 5){
             cout << "Read code: " << code << endl;
         }
-        grand_total += sum_ascii(code);
+        grand_total += gen_hash_index(code);
         count++;
     }
 
