@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include <string>
 using namespace std;
 
@@ -11,14 +12,23 @@ int sum_ascii(const string &s){
 }
 
 int main() {
-    string s;
+    ifstream fin("lab-37-data.txt");
 
-    cout << "Enter a string: ";
-    cin >> s;
+    if (!fin){
+        cerr << "Error: could not open lab-37-data.txt" << endl;
+        return 1;
+    }
 
-    int result = sum_ascii(s);
-    cout << "ASCII sum = " << result << endl;
+    string code;
+    long long grand_total = 0;
+    
+    while (fin >> code)
+    {
+        grand_total += sum_ascii(code);
+    }
+    cout << "Grand total ASCII sum = " << grand_total << endl;
 
+    fin.close();
     return 0;
 }
 
