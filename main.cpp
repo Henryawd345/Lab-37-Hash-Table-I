@@ -1,6 +1,8 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <map>
+#include <list>
 using namespace std;
 
 int gen_hash_index(const string &s){
@@ -14,26 +16,32 @@ int gen_hash_index(const string &s){
 int main() {
     ifstream fin("lab-37-data-2.txt");
 
-    if (!fin){
-        cerr << "Error: could not open lab-37-data.txt" << endl;
+    if (!fin.is_open()){
+        cerr << "Error: could not open lab-37-data-2.txt" << endl;
         return 1;
     }
 
+    map<int, list<string>> hash_table;
+
     string code;
-    long long grand_total = 0;
-    int count = 0;
     
     while (fin >> code){
-        if (count < 5){
-            cout << "Read code: " << code << endl;
-        }
-        grand_total += gen_hash_index(code);
-        count++;
+        int index = gen_hash_index(code);
+        hash_table[index].push_back(code);
     }
+    fin.close();
 
-    cout << "Total codes read = " << count << endl;
-    cout << "Grand total ASCII sum = " << grand_total << endl;
+    int printed = 0;
 
+    for (const auto &entry : hash_table){
+        int index = entry.first;
+        const list<string> &codes = entry.second;
+
+        cout << "Index " << index << ": ";
+
+        
+    }
+    return 0;
 
 } 
 
