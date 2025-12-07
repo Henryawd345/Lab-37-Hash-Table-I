@@ -12,7 +12,7 @@ int sum_ascii(const string &s){
 }
 
 int main() {
-    ifstream fin("lab-37-data.txt");
+    ifstream fin("lab-37-data-2.txt");
 
     if (!fin){
         cerr << "Error: could not open lab-37-data.txt" << endl;
@@ -21,16 +21,21 @@ int main() {
 
     string code;
     long long grand_total = 0;
+    int count = 0;
     
-    while (fin >> code)
-    {
+    while (fin >> code){
+        if (count < 5){
+            cout << "Read code: " << code << endl;
+        }
         grand_total += sum_ascii(code);
+        count++;
     }
+
+    cout << "Total codes read = " << count << endl;
     cout << "Grand total ASCII sum = " << grand_total << endl;
 
-    fin.close();
-    return 0;
-}
+
+} 
 
 /* 
 These targets are present in the dataset and can be used for testing:
