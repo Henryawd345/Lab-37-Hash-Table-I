@@ -102,9 +102,21 @@ void remove_key(map<int, list<string>> &hash_table){
 }
 
 void modify_key(map<int, list <string>> &hash_table){
+    string old_key, new_key;
 
+    cout << "Enter existing key to modify: ";
+    cin >> old_key;
 
-    
+    cout << "Enter NEW key value: ";
+    cin >> new_key;
+
+    int old_index = gen_hash_index(old_key);
+    auto it = hash_table.find(old_index);
+
+    if (it == hash_table.end()){
+        cout << "Old key NOT found. (No bucket for index " << old_index << ".)\n";
+        return;
+    }
 }
 
 int main() {
