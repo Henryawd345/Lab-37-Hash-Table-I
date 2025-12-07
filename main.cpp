@@ -7,16 +7,17 @@ int sum_ascii(const string &s){
     for (char c : s){
         sum += static_cast<int>(c);
     }
+    return sum;
 }
 
 int main() {
-    char a = 'A';
-    cout << a << endl;
-    cout << (int) a << endl;
-    int b = 66;
-    cout << b << endl;
-    cout << (char) b << endl;
-    
+    string s;
+
+    cout << "Enter a string: ";
+    cin >> s;
+
+    int result = sum_ascii(s);
+    cout << "ASCII sum = " << result << endl;
 
     return 0;
 }
